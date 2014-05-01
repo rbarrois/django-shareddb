@@ -3,6 +3,7 @@
 import requests
 
 from shareddb import testcase
+from django import test
 
 from .testapp import models
 
@@ -14,3 +15,24 @@ class BaseTest(testcase.LiveServerTestCase):
         response = requests.get(self.live_server_url + '/read/')
         self.assertEqual(200, response.status_code)
         self.assertEqual(b'[]', response.content)
+
+    def test_read_exists(self):
+        s = models.Something.objects.create(data='ex1')
+        response = requests.get(self.live_server_url + '/read/')
+        self.assertEqual(200, response.status_code)
+
+        data = response.json()
+        self.assertEqual([{'pk': s.pk, 'data': 'ex1'}], data)
+
+    def test_atomic_read_none(self):
+        response = requests.get(self.live_server_url + '/atomic-read/')
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(b'[]', response.content)
+
+    def test_atomic_read_exists(self):
+        s = models.Something.objects.create(data='ex1')
+        response = requests.get(self.live_server_url + '/atomic-read/')
+        self.assertEqual(200, response.status_code)
+
+        data = response.json()
+        self.assertEqual([{'pk': s.pk, 'data': 'ex1'}], data)

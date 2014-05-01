@@ -1,14 +1,27 @@
+import logging
 import json
 
+from django.db import transaction
 from django import http
 
 from . import models
-# Create your views here.
+
+logger = logging.getLogger(__name__)
 
 def read(request):
-    qs = (models.Something.objects
-        .order_by('pk')
-        .values('pk', 'data')
-    )
-    data = json.dumps(list(qs))
+    try:
+        qs = (models.Something.objects
+            .order_by('pk')
+            .values('pk', 'data')
+        )
+        data = json.dumps(list(qs))
+    except Exception as e:
+        logger.error("Failed to get items from qs: %r", e)
+        raise
+
     return http.HttpResponse(data, content_type='application/json')
+
+
+@transaction.atomic
+def atomic_read(request):
+    return read(request)

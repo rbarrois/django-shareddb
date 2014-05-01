@@ -50,8 +50,10 @@ WSGI_APPLICATION = 'dev.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'shareddb.backends.shareddb',
-        'INNER_ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'INNER_ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'INNER_ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'test-dbsharing',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -78,10 +80,16 @@ STATIC_URL = '/static/'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'threaded': {
+            'format': '%(thread)d(%(threadName)s): %(levelname)s %(message)s',
+        },
+    },
     'handlers': {
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
+            'formatter': 'threaded',
         },
     },
     'root': {

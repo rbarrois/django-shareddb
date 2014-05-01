@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 
@@ -5,6 +6,7 @@ from django.core import exceptions
 from django.test import testcases
 from django.utils import six
 
+logger = logging.getLogger(__name__)
 
 class LiveServerTestCase(testcases.TransactionTestCase):
     """
@@ -53,6 +55,7 @@ class LiveServerTestCase(testcases.TransactionTestCase):
             host, possible_ports, {})
         cls.server_thread.daemon = True
         cls.server_thread.start()
+        logger.debug("Started LiveServerThread %d", cls.server_thread.ident)
 
         # Wait for the live server to be ready
         cls.server_thread.is_ready.wait()
