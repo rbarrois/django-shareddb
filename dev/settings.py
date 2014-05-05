@@ -49,13 +49,13 @@ WSGI_APPLICATION = 'dev.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'shareddb.backends.shareddb',
-        'INNER_ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #'INNER_ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'test-dbsharing',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+import shareddb
+DATABASES = shareddb.patch_databases(DATABASES)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

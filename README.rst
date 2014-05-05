@@ -24,7 +24,7 @@ First, install django-shareddb:
     $ pip install django-shareddb
 
 
-Then, simply update your settings to use it's engine:
+Then, simply update your settings to use its wrapping engine:
 
 .. code-block:: python
 

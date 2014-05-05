@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
 
+
+SHAREDDB_ENGINE = 'shareddb.backends.shareddb'
 
 
 def patch_databases(orig_setting, whitelist=(), blacklist=()):
