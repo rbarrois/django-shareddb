@@ -43,8 +43,7 @@ a simple ``patch_databases`` function:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'shareddb.backends.shareddb',
-            'INNER_ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'test-dbsharing',
         }
     }
