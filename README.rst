@@ -12,7 +12,7 @@ database between each tests.
 It is **NOT** intended for production use, only for faster testing setups.
 
 
-This project support Django versions 1.6 and later, and Python 2.7, 3.3 and later.
+This project support Django versions 1.6, and Python 2.7, 3.2 and 3.3.
 
 Setup
 -----
