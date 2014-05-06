@@ -123,7 +123,7 @@ class DelegateQueue(object):
     def execute(self, function, *args, **kwargs):
         assert self.started
 
-        if threading.get_ident() == self.inner_thread.ident:
+        if threading.current_thread().ident == self.inner_thread.ident:
             # Don't delegate tasks generated from within another task,
             # as that would lock.
             return function(*args, **kwargs)
@@ -143,7 +143,7 @@ class DelegateQueue(object):
 
     def _assert_in_thread(self):
         """Ensure that the code is executing within the background thread."""
-        assert threading.get_ident() == self.inner_thread.ident
+        assert threading.current_thread().ident == self.inner_thread.ident
 
     @contextlib.contextmanager
     def consume(self, block=True, timeout=None):

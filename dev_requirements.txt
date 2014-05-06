@@ -2,6 +2,7 @@
 
 # For tests
 requests
+psycopg2
 
 # Misc
 coverage
