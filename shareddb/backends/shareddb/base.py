@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# Copyright (c) 2014 Raphaël Barrois
+# This software is distributed under the two-clause BSD license.
+
 
 from django.core.exceptions import ImproperlyConfigured
 from django.db import utils

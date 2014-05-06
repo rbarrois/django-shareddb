@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+# Copyright (c) 2014 Raphaël Barrois
+# This software is distributed under the two-clause BSD license.
+
 
 import requests
 
 from shareddb import testcase
-from django import test
 
 from .testapp import models
 

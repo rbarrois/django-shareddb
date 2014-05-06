@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Copyright (c) 2014 Raphaël Barrois
+# This software is distributed under the two-clause BSD license.
 
 """Utilities to delegate execution of a set of functions to a single background thread."""
 
