@@ -41,9 +41,7 @@ setup(
     url="https://github.com/rbarrois/%s/" % PYPI_PACKAGE,
     download_url="https://pypi.python.org/pypi/%s/" % PYPI_PACKAGE,
     packages=['shareddb', 'shareddb.backends', 'shareddb.backends.shareddb'],
-    install_requires=[
-        'Django>=1.6',
-    ],
+    install_requires=codecs.open('requirements.txt', 'r', 'utf-8').readlines(),
     setup_requires=[
         'setuptools>=0.8',
     ],
