@@ -7,7 +7,7 @@
 
 import contextlib
 import logging
-import queue
+from .compat import queue
 import threading
 
 logger = logging.getLogger(__name__)
