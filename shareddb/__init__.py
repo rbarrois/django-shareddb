@@ -2,7 +2,7 @@
 # Copyright (c) 2014 Raphaël Barrois
 # This software is distributed under the two-clause BSD license.
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 __author__ = "Raphaël Barrois <raphael.barrois+django-shareddb@polytechnique.org>"
 
 SHAREDDB_ENGINE = 'shareddb.backends.shareddb'
