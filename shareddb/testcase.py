@@ -12,7 +12,7 @@ from django.utils import six
 
 logger = logging.getLogger(__name__)
 
-class LiveServerTestCase(testcases.TransactionTestCase):
+class LiveServerTestCase(testcases.TestCase):
     """
     Does basically the same as TransactionTestCase but also launches a live
     http server in a separate thread so that the tests may use another testing
