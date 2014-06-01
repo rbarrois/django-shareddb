@@ -67,11 +67,11 @@ class DelegatingDatabaseWrapper(backends.BaseDatabaseWrapper):
     def savepoint(self):
         return self.delegate.execute(super(DelegatingDatabaseWrapper, self).savepoint)
 
-    def savepoint_rollback(self):
-        return self.delegate.execute(super(DelegatingDatabaseWrapper, self).savepoint_rollback)
+    def savepoint_rollback(self, sid):
+        return self.delegate.execute(super(DelegatingDatabaseWrapper, self).savepoint_rollback, sid)
 
-    def savepoint_commit(self):
-        return self.delegate.execute(super(DelegatingDatabaseWrapper, self).savepoint_commit)
+    def savepoint_commit(self, sid):
+        return self.delegate.execute(super(DelegatingDatabaseWrapper, self).savepoint_commit, sid)
 
     def clean_savepoints(self):
         return self.delegate.execute(super(DelegatingDatabaseWrapper, self).clean_savepoints)
